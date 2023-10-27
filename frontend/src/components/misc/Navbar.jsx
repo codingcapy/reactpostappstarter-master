@@ -1,5 +1,24 @@
 import { NavLink } from "react-router-dom";
 import useBoundStore from "../../store/Store";
+import {
+  HoverCard,
+  Group,
+  Button,
+  UnstyledButton,
+  Text,
+  SimpleGrid,
+  ThemeIcon,
+  Anchor,
+  Divider,
+  Center,
+  Box,
+  Burger,
+  Drawer,
+  Collapse,
+  ScrollArea,
+  rem,
+  useMantineTheme,
+} from '@mantine/core';
 
 const Navbar = () => {
   const { logoutService, user } = useBoundStore((state) => state);
@@ -27,9 +46,11 @@ const Navbar = () => {
           gridColumnGap: "40px",
         }}
       >
-        <NavLink to="/">
-          <h4>Home</h4>
-        </NavLink>
+        <Button variant="default">
+          <NavLink to="/">
+            <h4 style={{ color: "white" }}>Home</h4>
+          </NavLink>
+        </Button>
         {!!user && (
           <NavLink to="posts">
             {" "}
@@ -37,13 +58,17 @@ const Navbar = () => {
           </NavLink>
         )}
         {!!user ? (
-          <h4 className="logout" onClick={onLogout}>
-            Logout
-          </h4>
+          <Button variant="default">
+            <h4 className="logout" onClick={onLogout}>
+              Logout
+            </h4>
+          </Button>
         ) : (
-          <NavLink to="login">
-            <h4>Login</h4>
-          </NavLink>
+          <Button>
+            <NavLink to="login">
+              <h4 style={{ color: "white" }}>Login</h4>
+            </NavLink>
+          </Button>
         )}
       </div>
     </div>
